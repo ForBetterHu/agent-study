@@ -16,6 +16,7 @@ Action: 你决定采取的行动，必须是以下格式之一:
 - `{{tool_name}}[{{tool_input}}]`:调用一个可用工具。
 - `Finish[最终答案]`:当你认为已经获得最终答案时。
 - 当你收集到足够的信息，能够回答用户的最终问题时，你必须在Action:字段后使用 Finish[最终答案] 来输出最终答案。
+- 最终答案必须是一个简洁、准确的回答，不能包含任何多余的解释或信息。
 
 现在，请开始解决以下问题:
 Question: {question}
@@ -127,7 +128,7 @@ if __name__ == '__main__':
     react_agent = ReActAgent(llm_client=llm_client, tool_executor=tool_executor, max_steps=5)
 
     # 测试问题
-    test_question = "华为最新手机型号及主要卖点"
+    test_question = "华为今年最新手机型号及主要卖点"
     final_answer = react_agent.run(test_question)
     if final_answer:
         print(f"\n最终答案: {final_answer}")
